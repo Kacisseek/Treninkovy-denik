@@ -1,8 +1,9 @@
+// Profil uživatele (jméno, hmotnost, výška).
 class Profil {
   final int? id;
   final String jmeno;
-  final double hmotnost;
-  final double vyska;
+  final double hmotnost; // kg
+  final double vyska; // cm
 
   Profil({
     this.id,
