@@ -1,5 +1,5 @@
 // Načte knihovnu Flutteru s hotovými widgety (tlačítka, texty, seznamy...).
-import 'package:flutter/material.dart';
+import 'package:material_ui/material_ui.dart';
 // Načte náš DbHelper, přes který se komunikuje s databází.
 import '../database/db_helper.dart';
 // Načte třídu Cvik, ať víme, jak cvik vypadá.

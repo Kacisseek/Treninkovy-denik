@@ -1,5 +1,5 @@
 // Knihovna Flutteru s hotovými widgety (formuláře, tlačítka, texty...).
-import 'package:flutter/material.dart';
+import 'package:material_ui/material_ui.dart';
 // Náš DbHelper, přes který se ukládá do databáze.
 import '../database/db_helper.dart';
 // Třída Cvik, kterou formulář vytváří a upravuje.

@@ -1,5 +1,5 @@
 // Knihovna Flutteru s hotovými widgety (formuláře, tlačítka, texty...).
-import 'package:flutter/material.dart';
+import 'package:material_ui/material_ui.dart';
 // Náš DbHelper, přes který se profil čte a ukládá.
 import '../database/db_helper.dart';
 // Třída Profil, kterou formulář vytváří.
