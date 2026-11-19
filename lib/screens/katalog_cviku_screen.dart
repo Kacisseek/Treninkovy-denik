@@ -174,18 +174,18 @@ class _KatalogCvikuScreenState extends State<KatalogCvikuScreen> {
                   // Bílý koš uvnitř červeného pozadí.
                   child: const Icon(Icons.delete, color: Colors.white),
                 ),
-                // Zavolá se při tažení. Vrátí-li true, řádek zmizí,
-                // vrátí-li false, vrátí se zpět na místo.
-                confirmDismiss: (_) => _potvrdSmazani(cvik),
-                // Zavolá se až po potvrzení a odstranění řádku z obrazovky.
-                onDismissed: (_) async {
-                  // Smaže cvik z databáze.
+                // confirmDismiss se zavolá při tažení, ještě než řádek zmizí.
+                // Zeptá se uživatele, a když potvrdí, smaže cvik z databáze.
+                // Vrátí true = řádek může zmizet, false = vrátí se zpět.
+                confirmDismiss: (_) async {
+                  final potvrzeno = await _potvrdSmazani(cvik);
+                  if (!potvrzeno) return false;
                   await DbHelper.instance.smazCvik(cvik.id!);
-                  // Ověření, že obrazovka stále existuje.
-                  if (!mounted) return;
-                  // Načte seznam znovu z databáze.
-                  _obnov();
+                  return true;
                 },
+                // Smazáno už je, tady jen hned obnovíme seznam.
+                // Funkce není async, takže řádek zmizí okamžitě.
+                onDismissed: (_) => _obnov(),
                 // Samotný vzhled řádku.
                 child: ListTile(
                   // Hlavní text řádku: název cviku.
